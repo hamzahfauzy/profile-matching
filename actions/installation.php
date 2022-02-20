@@ -30,6 +30,23 @@ if(request() == 'POST')
         'route_path' => '*'
     ]);
 
+    // create roles
+    $role = $db->insert('roles',[
+        'name' => 'siswa'
+    ]);
+
+    // create roles route
+    $role = $db->insert('role_routes',[
+        'role_id' => $role->id,
+        'route_path' => 'siswa/*'
+    ]);
+
+    // create roles route
+    $role = $db->insert('role_routes',[
+        'role_id' => $role->id,
+        'route_path' => 'default/*'
+    ]);
+
     set_flash_msg(['success'=>'Instalasi Berhasil']);
     header('location:index.php?r=auth/login');
     die();

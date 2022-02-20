@@ -4,6 +4,7 @@ require '../libs/JwtAuth.php';
 require '../libs/ArrayHelper.php';
 require '../libs/Session.php';
 require '../libs/Database.php';
+require '../libs/Form.php';
 
 $config = require '../config/main.php';
 
@@ -420,4 +421,12 @@ function count_total($items)
         $total += $item['subtotal'];
 
     return $total;
+}
+
+function _ucwords($str)
+{
+    $str = str_replace('_',' ',$str);
+    $str = str_replace('-',' ',$str);
+
+    return ucwords($str);
 }

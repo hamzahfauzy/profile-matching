@@ -42,14 +42,15 @@ CREATE TABLE faktor (
 CREATE TABLE gap (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nama VARCHAR(100) NOT NULL,
-    nilai INT NOT NULL,
+    nilai DOUBLE(10,2) NOT NULL,
     selisih INT NOT NULL,
     keterangan TEXT
 );
 
 CREATE TABLE kriteria (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nama VARCHAR(100) NOT NULL
+    nama VARCHAR(100) NOT NULL,
+    bobot INT NOT NULL
 );
 
 CREATE TABLE subkriteria (
@@ -77,7 +78,9 @@ CREATE TABLE faktor_jurusan (
 CREATE TABLE calon_siswa (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nama VARCHAR(100) NOT NULL,
-    alamat TEXT NULL
+    alamat TEXT NULL,
+    user_id INT NOT NULL,
+    CONSTRAINT fk_calon_siswa_user_id FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE penilaian (
@@ -91,11 +94,21 @@ CREATE TABLE penilaian (
 
 INSERT INTO faktor (cf, sf) VALUES (60,40);
 
-INSERT INTO kriteria(nama) VALUES ('Menghidupkan komputer dan mematikan komputer');
-INSERT INTO kriteria(nama) VALUES ('Menggunakan mouse');
-INSERT INTO kriteria(nama) VALUES ('Mengetik');
-INSERT INTO kriteria(nama) VALUES ('Menginstall Komputer');
-INSERT INTO kriteria(nama) VALUES ('Menginstall Software');
+INSERT INTO gap(nama, selisih, nilai, keterangan) VALUES ('GAP 0',0,5,'Kompetensi sesuai dengan yang dibutuhkan');
+INSERT INTO gap(nama, selisih, nilai, keterangan) VALUES ('GAP 1',1,4.5,'Kompetensi individu kelebihan 1 tingkat/level');
+INSERT INTO gap(nama, selisih, nilai, keterangan) VALUES ('GAP -1',-1,4,'Kompetensi individu kekurangan 1 tingkat/level');
+INSERT INTO gap(nama, selisih, nilai, keterangan) VALUES ('GAP 2',2,3.5,'Kompetensi individu kelebihan 2 tingkat/level');
+INSERT INTO gap(nama, selisih, nilai, keterangan) VALUES ('GAP -2',-2,3,'Kompetensi individu kekurangan 2 tingkat/level');
+INSERT INTO gap(nama, selisih, nilai, keterangan) VALUES ('GAP 3',3,2.5,'Kompetensi individu kelebihan 3 tingkat/level');
+INSERT INTO gap(nama, selisih, nilai, keterangan) VALUES ('GAP -3',-3,2,'Kompetensi individu kekurangan 3 tingkat/level');
+INSERT INTO gap(nama, selisih, nilai, keterangan) VALUES ('GAP 4',4,1.5,'Kompetensi individu kelebihan 4 tingkat/level');
+INSERT INTO gap(nama, selisih, nilai, keterangan) VALUES ('GAP -4',-4,1,'Kompetensi individu kekurangan 4 tingkat/level');
+
+INSERT INTO kriteria(nama,bobot) VALUES ('Menghidupkan komputer dan mematikan komputer',3);
+INSERT INTO kriteria(nama,bobot) VALUES ('Menggunakan mouse',3);
+INSERT INTO kriteria(nama,bobot) VALUES ('Mengetik',3);
+INSERT INTO kriteria(nama,bobot) VALUES ('Menginstall Komputer',3);
+INSERT INTO kriteria(nama,bobot) VALUES ('Menginstall Software',3);
 
 INSERT INTO subkriteria(id_kriteria,nama,bobot) VALUES (1,'Bisa',3);
 INSERT INTO subkriteria(id_kriteria,nama,bobot) VALUES (1,'Cukup',2);

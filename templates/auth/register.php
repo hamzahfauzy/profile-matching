@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Masuk</title>
+	<title>Mendaftar</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="assets/img/main-logo.png" type="image/x-icon"/>
 
@@ -26,34 +26,27 @@
 	<div class="container">
         <div class="row mt-4">
             <div class="col-sm-12 col-md-6 col-lg-4 mx-auto">
-                <?php if($success_msg): ?>
-                <div class="alert alert-success"><?=$success_msg?></div>
-                <?php endif ?>
-
-                <?php if($error_msg): ?>
-                <div class="alert alert-danger"><?=$error_msg?></div>
-                <?php endif ?>
                 <div class="card full-height">
                     <div class="card-body">
                         <center>
                             <img src="assets/img/main-logo.png" width="150px" height="100px" alt="logo" style="object-fit:contain;">
                         </center>
-                        <div class="card-title text-center">Login Form</div>
-                        <div class="card-category text-center">Masukkan Username dan Password anda pada bidang di bawah ini.</div>
+                        <div class="card-title text-center">Register Form</div>
+                        <div class="card-category text-center">Silahkan lengkapi form di bawah ini.</div>
 
                         <form action="" method="post">
                             <div class="form-group">
+                                <label for="">Nama</label>
+                                <input type="text" name="siswa[nama]" id="" class="form-control mb-2" placeholder="Nama Anda Disini...">
+                                <label for="">Alamat</label>
+                                <textarea name="siswa[alamat]" id="" required class="form-control mb-2" placeholder="Alamat Disini..."></textarea>
                                 <label for="">Nama Pengguna</label>
-                                <input type="text" name="username" id="" class="form-control mb-2" placeholder="Nama Pengguna Disini...">
+                                <input type="text" name="users[username]" id="" class="form-control mb-2" placeholder="Nama Pengguna Disini...">
                                 <label for="">Kata Sandi</label>
-                                <input type="password" name="password" id="" class="form-control mb-2" placeholder="Kata Sandi Disini...">
+                                <input type="password" name="users[password]" id="" class="form-control mb-2" placeholder="Kata Sandi Disini...">
                                 <button class="btn btn-primary btn-block btn-round">Masuk</button>
                             </div>
                         </form>
-
-                        <center>
-                            Untuk calon siswa yang belum memiliki akun, silahkan <a href="index.php?r=auth/register">mendaftar</a> terlebih dahulu!
-                        </center>
                     </div>
                 </div>
             </div>

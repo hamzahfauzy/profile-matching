@@ -59,6 +59,7 @@
 	<script src="assets/js/setting-demo.js"></script>
 	<script src="assets/js/demo.js"></script>
 	<script>
+		$('.datatable').dataTable();
 		Circles.create({
 			id:'circles-1',
 			radius:45,

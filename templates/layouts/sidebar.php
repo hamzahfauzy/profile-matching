@@ -10,7 +10,7 @@
                     <a href="">
                         <span>
                             <?=auth()->user->name?>
-                            <span class="user-level" style="text-transform:capitalize;"><?=get_role(auth()->user->id)->name?></span>
+                            <span class="user-level" style="text-transform:capitalize;"><?=get_role(auth()->user->id)->name == 'siswa' ? 'Calon Siswa' : get_role(auth()->user->id)->name?></span>
                         </span>
                     </a>
                     <div class="clearfix"></div>

@@ -8,8 +8,8 @@ return [
     'subkriteria'   => 'fas fa-file',
     'jurusan'   => 'fas fa-archive',
     'faktor jurusan'   => 'fas fa-archive',
-    'calon siswa'  => 'fas fa-address-book',
-    'penilaian'  => 'fas fa-address-book',
+    // 'calon siswa'  => 'fas fa-address-book',
+    'penilaian'  => 'fas fa-pencil-alt',
     'pengguna'  => 'fas fa-users',
     'pengaturan' => 'fas fa-cog'
 ];

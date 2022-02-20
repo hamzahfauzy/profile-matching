@@ -8,7 +8,20 @@
                         <h5 class="text-white op-7 mb-2">Memanajemen data <?=_ucwords($table)?></h5>
                     </div>
                     <div class="ml-md-auto py-2 py-md-0">
-                        <a href="index.php?r=crud/create&table=<?=$table?>" class="btn btn-secondary btn-round">Buat <?=_ucwords($table)?></a>
+                        <?php 
+                        if(get_role(auth()->user->id)->name == 'siswa'):
+                            if(empty($datas)): 
+                        ?>
+                            <a href="index.php?r=siswa/create" class="btn btn-secondary btn-round">Buat <?=_ucwords($table)?></a>
+                        <?php else: ?>
+                            <!-- <a href="index.php?r=siswa/edit" class="btn btn-secondary btn-round">Edit <?=_ucwords($table)?></a> -->
+                            <a href="index.php?r=siswa/delete" class="btn btn-danger btn-round">Hapus <?=_ucwords($table)?></a>
+                        <?php endif ?>
+                        <?php endif ?>
+
+                        <?php if(!empty($datas)): ?>
+                            <a href="index.php?r=siswa/hasil" class="btn btn-secondary btn-round">Hasil Penilaian</a>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
@@ -37,8 +50,6 @@
                                             ?>
                                             <th><?=$label?></th>
                                             <?php endforeach ?>
-                                            <th class="text-right">
-                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -64,10 +75,6 @@
                                             ?>
                                             <td><?=$data_value?></td>
                                             <?php endforeach ?>
-                                            <td>
-                                                <a href="index.php?r=crud/edit&table=<?=$table?>&id=<?=$data->id?>" class="btn btn-sm btn-warning"><i class="fas fa-pencil-alt"></i> Edit</a>
-                                                <a href="index.php?r=crud/delete&table=<?=$table?>&id=<?=$data->id?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hapus</a>
-                                            </td>
                                         </tr>
                                         <?php endforeach ?>
                                     </tbody>

@@ -28,7 +28,7 @@ if(!$installation && $route != "installation")
 }
 
 $auth = auth();
-if(!isset($auth->user) && !in_array($route, ['auth/login','installation']))
+if(!isset($auth->user) && !in_array($route, ['auth/login','installation','auth/register']))
 {
     header("location:index.php?r=auth/login");
     die();

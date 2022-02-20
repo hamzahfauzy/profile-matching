@@ -8,7 +8,7 @@
                         <h5 class="text-white op-7 mb-2">Memanajemen data <?=_ucwords($table)?></h5>
                     </div>
                     <div class="ml-md-auto py-2 py-md-0">
-                        <a href="index.php?r=crud/index&table=<?=$table?>" class="btn btn-warning btn-round">Kembali</a>
+                        <a href="index.php?r=siswa/index" class="btn btn-warning btn-round">Kembali</a>
                     </div>
                 </div>
             </div>
@@ -19,22 +19,15 @@
                     <div class="card">
                         <div class="card-body">
                             <form action="" method="post">
-                                <?php 
-                                foreach(config('fields')[$table] as $key => $field): 
-                                    $label = $field;
-                                    $type  = "text";
-                                    if(is_array($field))
-                                    {
-                                        $field_data = $field;
-                                        $field = $key;
-                                        $label = $field_data['label'];
-                                        $type  = $field_data['type'];
-                                    }
-                                    $label = _ucwords($label);
-                                ?>
+                                <?php foreach($kriteria as $k): ?>
                                 <div class="form-group">
-                                    <label for=""><?=$label?></label>
-                                    <?= Form::input($type, $table."[".$field."]", ['class'=>"form-control","placeholder"=>$label,"required"=>""]) ?>
+                                    <label for=""><?=$k->nama?></label>
+                                    <select name="kriteria[<?=$k->id?>]" class="form-control" required>
+                                        <option value="">- Pilih -</option>
+                                        <?php foreach($k->subkriteria as $sub): ?>
+                                        <option value="<?=$sub->id?>"><?=$sub->nama?></option>
+                                        <?php endforeach ?>
+                                    </select>
                                 </div>
                                 <?php endforeach ?>
                                 <div class="form-group">
